@@ -1,0 +1,17 @@
+FREE MOCKUP FORM SETUP
+
+1. Go to Formspree and create a free account.
+2. Create a new form named "Free Mockup Requests".
+3. Set the notification/target email to: crisostomojay@outlook.com
+4. Copy your form endpoint. It looks like:
+   https://formspree.io/f/abcdwxyz
+5. Open src/App.jsx.
+6. Find:
+   const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+7. Replace it with your real endpoint. Example:
+   const FORM_ENDPOINT = 'https://formspree.io/f/abcdwxyz'
+8. Save, run npm install and npm run dev, then submit a test request.
+9. Check the Formspree dashboard and your target email for the test submission.
+10. Redeploy the website after confirming it works.
+
+The form now submits in the background and shows success/error messages. It no longer opens the visitor's email app.
