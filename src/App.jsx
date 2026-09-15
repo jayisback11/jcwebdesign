@@ -8,6 +8,7 @@ import {
   Globe2,
   Laptop,
   Mail,
+  Maximize2,
   Menu,
   MessageCircle,
   MonitorSmartphone,
@@ -65,10 +66,51 @@ const packages = [
   },
 ]
 
+
+const portfolioWorks = [
+  {
+    title: 'Auto Pro Car Care Center',
+    category: 'Automotive Website',
+    image: '/assets/portfolio/auto-pro.webp',
+    description: 'Service-focused website design with strong scheduling, phone, location, and trust-building calls to action.',
+  },
+  {
+    title: 'Garden Nails & Spa',
+    category: 'Beauty & Spa Website',
+    image: '/assets/portfolio/garden-nails.webp',
+    description: 'Soft, polished salon design built around appointment booking, service discovery, and a relaxing brand feel.',
+  },
+  {
+    title: 'Glamour Cuts Salon Nails & Spa',
+    category: 'Salon Website',
+    image: '/assets/portfolio/glamour-cuts.webp',
+    description: 'Premium dark-and-gold design featuring services, gallery content, reviews, and appointment booking.',
+  },
+  {
+    title: 'Salon Avenue Hair & Nails',
+    category: 'Hair & Nail Salon Website',
+    image: '/assets/portfolio/salon-avenue.webp',
+    description: 'Bright, modern salon website with clear booking actions, service categories, social proof, and location details.',
+  },
+  {
+    title: "Ragusa’s Automotive",
+    category: 'Auto Repair Website',
+    image: '/assets/portfolio/ragusas-automotive.webp',
+    description: 'Trust-first automotive website emphasizing repair services, reviews, local credibility, and quote requests.',
+  },
+  {
+    title: 'Newness of Life Ministries',
+    category: 'Church & Community Website',
+    image: '/assets/portfolio/newness-of-life.webp',
+    description: 'Welcoming ministry website with mission-focused messaging, community sections, and clear ways to connect.',
+  },
+]
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [formStatus, setFormStatus] = useState('idle')
   const [formError, setFormError] = useState('')
+  const [activeProject, setActiveProject] = useState(null)
 
   // Create a free form at https://formspree.io, then paste your endpoint here.
   // Example: https://formspree.io/f/abcdwxyz
@@ -136,7 +178,7 @@ function App() {
 
           <nav className={menuOpen ? 'nav-links open' : 'nav-links'}>
             <a href="#services" onClick={closeMenu}>Services</a>
-            <a href="#work" onClick={closeMenu}>Work</a>
+            <a href="#work" onClick={closeMenu}>Portfolio</a>
             <a href="#process" onClick={closeMenu}>Process</a>
             <a href="#pricing" onClick={closeMenu}>Pricing</a>
             <a href="#contact" className="nav-cta" onClick={closeMenu}>Free Mockup</a>
@@ -159,7 +201,7 @@ function App() {
               <p className="hero-lead">Modern, mobile-friendly websites designed to help businesses of all types look professional and turn more visitors into customers.</p>
               <div className="hero-actions">
                 <a className="btn btn-primary" href="#contact">Get a Free Homepage Mockup <ArrowRight size={18} /></a>
-                <a className="btn btn-secondary" href="#work">See My Work</a>
+                <a className="btn btn-secondary" href="#work">View Portfolio</a>
               </div>
               <div className="trust-row">
                 <span><Check size={16} /> No obligation</span>
@@ -237,43 +279,39 @@ function App() {
           </div>
         </section>
 
-        <section id="work" className="section section-soft">
-          <div className="container work-grid">
-            <div className="work-copy">
-              <span className="kicker">DESIGN PREVIEW</span>
-              <h2>Show customers what your business can become online.</h2>
-              <p>Your website should make a strong first impression in seconds. I design around your business, services, and the action you want visitors to take.</p>
-              <ul className="check-list">
-                <li><Check /> Clear headline and call to action</li>
-                <li><Check /> Services presented simply</li>
-                <li><Check /> Trust-building sections</li>
-                <li><Check /> Easy quote or contact flow</li>
-              </ul>
-              <a href="#contact" className="text-link">Request your homepage concept <ArrowRight size={17} /></a>
-            </div>
-            <div className="work-image-card universal-preview" aria-label="Generic business website preview">
-              <div className="preview-browser-top"><span /><span /><span /><div>yourbusiness.com</div></div>
-              <div className="preview-site">
-                <div className="preview-site-nav">
-                  <strong>YOUR BUSINESS</strong>
-                  <div><span>Home</span><span>Services</span><span>About</span><span>Contact</span></div>
-                </div>
-                <div className="preview-site-hero">
-                  <div>
-                    <span className="preview-tag">ANY INDUSTRY • ANY LOCATION</span>
-                    <h3>A website built around your business.</h3>
-                    <p>Professional, mobile-friendly design with clear calls to action that help turn visitors into customers.</p>
-                    <button type="button">GET STARTED</button>
-                  </div>
-                  <div className="preview-art"><Globe2 size={78} strokeWidth={1.25} /></div>
-                </div>
-                <div className="preview-features">
-                  <div><MonitorSmartphone size={22} /><b>Mobile Ready</b><small>Looks great on every screen</small></div>
-                  <div><BadgeCheck size={22} /><b>Professional</b><small>Build trust with customers</small></div>
-                  <div><MousePointerClick size={22} /><b>Lead Focused</b><small>Clear quote & contact actions</small></div>
-                </div>
+        <section id="work" className="section section-soft portfolio-section">
+          <div className="container">
+            <div className="portfolio-heading-row">
+              <div className="section-heading portfolio-heading">
+                <span className="kicker">SELECTED WORK</span>
+                <h2>Websites designed for real businesses.</h2>
+                <p>A selection of recent website designs across automotive, beauty, salon, and community organizations. Each one is built around the business, its customers, and the action visitors need to take.</p>
               </div>
-              <div className="preview-location-pill"><Globe2 size={17} /> Available to businesses anywhere</div>
+              <a href="#contact" className="btn btn-secondary portfolio-cta">Start Your Project <ArrowRight size={18} /></a>
+            </div>
+
+            <div className="portfolio-grid">
+              {portfolioWorks.map((project) => (
+                <article className="portfolio-card" key={project.title}>
+                  <button
+                    type="button"
+                    className="portfolio-thumb"
+                    onClick={() => setActiveProject(project)}
+                    aria-label={`View full design for ${project.title}`}
+                  >
+                    <img src={project.image} alt={`${project.title} website design`} loading="lazy" />
+                    <span className="portfolio-view"><Maximize2 size={17} /> View Full Design</span>
+                  </button>
+                  <div className="portfolio-info">
+                    <span className="portfolio-category">{project.category}</span>
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                    <button type="button" className="portfolio-link" onClick={() => setActiveProject(project)}>
+                      View project <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -416,11 +454,30 @@ function App() {
           <p>Modern, mobile-friendly websites for businesses anywhere.</p>
           <div className="footer-links">
             <a href="#services">Services</a>
+            <a href="#work">Portfolio</a>
             <a href="#pricing">Pricing</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
       </footer>
+
+      {activeProject && (
+        <div className="portfolio-modal" role="dialog" aria-modal="true" aria-label={`${activeProject.title} full website design`} onClick={() => setActiveProject(null)}>
+          <div className="portfolio-modal-inner" onClick={(e) => e.stopPropagation()}>
+            <div className="portfolio-modal-bar">
+              <div>
+                <span>{activeProject.category}</span>
+                <strong>{activeProject.title}</strong>
+              </div>
+              <button type="button" onClick={() => setActiveProject(null)} aria-label="Close project preview"><X size={23} /></button>
+            </div>
+            <div className="portfolio-modal-scroll">
+              <img src={activeProject.image} alt={`${activeProject.title} full website design`} />
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   )
 }
