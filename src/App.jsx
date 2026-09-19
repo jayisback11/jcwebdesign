@@ -396,8 +396,19 @@ function App() {
                 <input required type="email" name="email" placeholder="you@business.com" />
               </label>
               <label>
+                Phone number
+                <input required type="tel" name="phone" placeholder="(225) 555-0123" autoComplete="tel" />
+              </label>
+              <label>
                 Current website or social page
                 <input name="website" placeholder="https://..." />
+              </label>
+              <label>
+                <span className="form-label-row">
+                  <span>Referral</span>
+                  <span className="discount-label">Get 5% discount</span>
+                </span>
+                <input name="referral" placeholder="Referral name or code" />
               </label>
               <label>
                 What do you need help with?

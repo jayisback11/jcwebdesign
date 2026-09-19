@@ -165,6 +165,25 @@ img { display: block; max-width: 100%; }
 .form-title h3 { font-family: Manrope, sans-serif; font-size: 25px; color: var(--navy); margin: 0; }
 .form-title p { color: var(--muted); margin: 7px 0 4px; font-size: 13px; }
 .lead-form label { display: grid; gap: 7px; color: #33405b; font-size: 12px; font-weight: 800; }
+.form-label-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.discount-label {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  margin-left: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #edf9f2;
+  color: #1c6f42;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .01em;
+}
 .lead-form input, .lead-form select, .lead-form textarea { width: 100%; border: 1px solid #d5dfeb; background: #fbfdff; color: var(--navy); border-radius: 10px; padding: 13px 14px; outline: none; resize: vertical; font-weight: 500; }
 .lead-form input:focus, .lead-form select:focus, .lead-form textarea:focus { border-color: #78aaff; box-shadow: 0 0 0 4px rgba(18,99,237,.08); }
 .success-message { padding: 12px 14px; border-radius: 10px; background: #edf9f2; color: #1c6f42; font-size: 12px; line-height: 1.5; }
